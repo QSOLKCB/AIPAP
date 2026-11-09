@@ -1,8 +1,8 @@
-# QSOL-MAP
+# AIPAP
 
-**QSOL Machine Perception Audio Protocol**
+**AI Perception Audio Protocol**
 
-QSOL-MAP is an experimental protocol and deterministic reference implementation for representing audio as machine-readable acoustic evidence before learned tokenization, semantic interpretation, or human perceptual reporting is applied.
+AIPAP is an experimental protocol and deterministic reference implementation for representing audio as machine-readable acoustic evidence before learned tokenization, semantic interpretation, or human perceptual reporting is applied.
 
 The project starts from a simple premise:
 
@@ -12,7 +12,7 @@ A machine can inspect waveform structure, complex spectral structure, phase, tra
 
 ## Core invariant
 
-QSOL-MAP separates epistemic layers:
+AIPAP separates epistemic layers:
 
 ```text
 L0  source / physical signal encoding
@@ -34,7 +34,7 @@ A neural token is not the waveform. A deterministic spectrum is not subjective h
 
 ## Current status: v0.2.0 multi-resolution L1
 
-QSOL-MAP currently implements two deterministic Layer-1 profiles.
+AIPAP currently implements two deterministic Layer-1 profiles.
 
 ### Frozen v0.1 short reference
 
@@ -71,7 +71,7 @@ v0.2 imports the frozen v0.1 evidence and adds:
 - strict sidecar ordering, arithmetic, matrix-commitment, receipt, and reconstructed-evidence verification;
 - a frozen v0.2 golden percept vector.
 
-The complete identity-bearing quarter-wave Q15 table, full-table reconstruction rule, and long FFT algorithm are published in `spec/QSOL-MAP-MULTIRES-v0.2.md`. Section 4.1 specifies ten-bit input reversal, all ten radix-2 stages, twiddle scheduling, exact scaled butterflies and retained-bin ordering, with no per-stage division or final normalization. An executable specification regression compares complete coefficient rows against the implementation.
+The complete identity-bearing quarter-wave Q15 table, full-table reconstruction rule, and long FFT algorithm are published in `spec/AIPAP-MULTIRES-v0.2.md`. Section 4.1 specifies ten-bit input reversal, all ten radix-2 stages, twiddle scheduling, exact scaled butterflies and retained-bin ordering, with no per-stage division or final normalization. An executable specification regression compares complete coefficient rows against the implementation.
 
 The compact verifier bounds long/transient energies by source-sized PCM16/window maxima, checks short-source integer realizability, and requires the complete channel Gram matrix to be positive semidefinite with rank no greater than the source frame count. It derives **per-bin coefficient divisors** from the frozen integer butterfly graph, applying them to every event and to multi-event aggregate power sums. Every event's total and weighted power also retain the appropriate sum divisors.
 
@@ -97,7 +97,7 @@ bins  = 0..512
 
 Both use exact integer triangular windows, frozen Q15 twiddle tables, and exact Python integer arithmetic in the reference path.
 
-QSOL-MAP deliberately keeps both resolutions rather than pretending one analysis scale captures every relevant structure.
+AIPAP deliberately keeps both resolutions rather than pretending one analysis scale captures every relevant structure.
 
 ## High-sample-rate observation
 
@@ -109,7 +109,7 @@ f_k = k * f_s / 1024
 
 v0.2 retains all represented bins through source Nyquist. It does not discard represented content above conventional human-audible ranges merely because a human listener may not hear it.
 
-That does **not** mean a high sample rate proves the microphone, ADC, source medium, or previous processing chain captured physically valid ultrasonic information. QSOL-MAP observes the supplied sampled signal under its declared contract.
+That does **not** mean a high sample rate proves the microphone, ADC, source medium, or previous processing chain captured physically valid ultrasonic information. AIPAP observes the supplied sampled signal under its declared contract.
 
 ## Deterministic transient candidates
 
@@ -137,7 +137,7 @@ This is an authored deterministic signal event, not equivalence to human onset p
 
 ## Channel relationships
 
-QSOL-MAP never implicitly downmixes canonical input. For every pair `i<j`, v0.2 records exact dot product and sign, channel sums of squares, difference/sum energies, and zero-lag correlation squared when both channel energies are nonzero.
+AIPAP never implicitly downmixes canonical input. For every pair `i<j`, v0.2 records exact dot product and sign, channel sums of squares, difference/sum energies, and zero-lag correlation squared when both channel energies are nonzero.
 
 The complete channel Gram matrix must be positive semidefinite and of rank no greater than the source frame count. These real-vector conditions alone do not prove PCM16 integer realizability. Complete two-, three- and four-frame multichannel sources additionally require one shared signed PCM16 assignment reproducing every Gram entry, long-window energy, endpoint power and reported DC/Nyquist sign. Separate pairwise witnesses are insufficient.
 
@@ -192,17 +192,17 @@ No third-party Python packages are required.
 ### Frozen v0.1
 
 ```bash
-python3 -m qsol_map analyze input.wav -o percept-v01.json
-python3 -m qsol_map verify percept-v01.json
+python3 -m aipap analyze input.wav -o percept-v01.json
+python3 -m aipap verify percept-v01.json
 ```
 
 ### v0.2
 
 ```bash
-python3 -m qsol_map analyze-v0.2 input.wav -o percept-v02.json
-python3 -m qsol_map analyze-v0.2 input.wav -o percept-v02.json --sidecar spectral-v02.ndjson
-python3 -m qsol_map verify-v0.2 percept-v02.json
-python3 -m qsol_map verify-sidecar-v0.2 percept-v02.json spectral-v02.ndjson
+python3 -m aipap analyze-v0.2 input.wav -o percept-v02.json
+python3 -m aipap analyze-v0.2 input.wav -o percept-v02.json --sidecar spectral-v02.ndjson
+python3 -m aipap verify-v0.2 percept-v02.json
+python3 -m aipap verify-sidecar-v0.2 percept-v02.json spectral-v02.ndjson
 ```
 
 Output aliases are rejected before writes, including input/stdout collisions and filesystem case/Unicode-normalization equivalence. The CLI reserves nontruncating regular-file handles before analysis, checks their identities and revalidates their paths, then writes through held descriptors instead of reopening replacement paths. This is not an atomic multi-file transaction.
@@ -265,7 +265,7 @@ Sidecar tests cover reconstructed-evidence contradictions, Boolean positions, st
 
 ## Benchmarking and optimization
 
-QSOL-MAP follows `QSOLKCB/OPT`: correctness outranks speed, reference behavior remains available, and performance claims stay local to measured environments.
+AIPAP follows `QSOLKCB/OPT`: correctness outranks speed, reference behavior remains available, and performance claims stay local to measured environments.
 
 The environment-scoped benchmark runs directly from a checkout:
 
@@ -288,7 +288,7 @@ Neural-codec architectural reference:
 
 > Neil Zeghidour, Alejandro Luebs, Ahmed Omran, Jan Skoglund, Marco Tagliasacchi, *SoundStream: An End-to-End Neural Audio Codec*, arXiv:2107.03312.
 
-SoundStream demonstrates learned embeddings and residual vector quantization. QSOL-MAP reserves such learned representation for a future **L2 receiver**, separately identified from deterministic L1 evidence.
+SoundStream demonstrates learned embeddings and residual vector quantization. AIPAP reserves such learned representation for a future **L2 receiver**, separately identified from deterministic L1 evidence.
 
 No SoundStream code, model weights, or codebooks are included.
 
@@ -323,11 +323,11 @@ See:
 - [ROADMAP.md](ROADMAP.md)
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 - [docs/CLAIM_BOUNDARIES.md](docs/CLAIM_BOUNDARIES.md)
-- [spec/QSOL-MAP-MULTIRES-v0.2.md](spec/QSOL-MAP-MULTIRES-v0.2.md)
+- [spec/AIPAP-MULTIRES-v0.2.md](spec/AIPAP-MULTIRES-v0.2.md)
 
 ## Claim boundary
 
-QSOL-MAP does **not** claim that an AI has subjective auditory experience. It does not equate spectral analysis with human hearing, represented ultrasonic bins with verified physical ultrasonic capture, learned tokens with physical truth, or semantic labels with objective properties of music.
+AIPAP does **not** claim that an AI has subjective auditory experience. It does not equate spectral analysis with human hearing, represented ultrasonic bins with verified physical ultrasonic capture, learned tokens with physical truth, or semantic labels with objective properties of music.
 
 The compact percept and spectral sidecar are observation records under versioned contracts, not replacements for the source waveform and not proofs of scientific validity.
 

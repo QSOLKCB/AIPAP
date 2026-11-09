@@ -7,10 +7,10 @@ from itertools import product
 from math import isqrt
 import unittest
 
-from qsol_map import multiresolution as mr
-from qsol_map import sidecar
-from qsol_map.mono_constraints import _three_sample_window_vectors
-from qsol_map.wav import parse_pcm16_wav
+from aipap import multiresolution as mr
+from aipap import sidecar
+from aipap.mono_constraints import _three_sample_window_vectors
+from aipap.wav import parse_pcm16_wav
 from test_pr2_integer_and_write_checks import rehash
 from test_pr2_live_review_fixes import make_wav
 

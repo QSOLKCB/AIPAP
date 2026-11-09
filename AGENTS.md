@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Machine-oriented repository rules for QSOL-MAP.
+Machine-oriented repository rules for AIPAP.
 
 ## Authority order
 

@@ -2,14 +2,14 @@ import copy
 import struct
 import unittest
 
-from qsol_map.analysis import (
+from aipap.analysis import (
     PERCEPT_DOMAIN,
     build_percept,
     verify_percept_envelope,
 )
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.tables import FRAME_SIZE
-from qsol_map.wav import parse_pcm16_wav
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.tables import FRAME_SIZE
+from aipap.wav import parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1):
@@ -30,6 +30,18 @@ def make_wav(samples, sample_rate=48000, channels=1):
 
 
 class AnalysisTests(unittest.TestCase):
+    def test_package_rename_preserves_v01_wire_contract(self):
+        wave = parse_pcm16_wav(make_wav([0] * FRAME_SIZE))
+        envelope = build_percept(wave)
+        self.assertEqual(envelope["schema"], "qsol-map-percept-envelope-v0.1")
+        self.assertEqual(envelope["percept"]["schema"], "qsol-map-percept-core-v0.1")
+        self.assertEqual(envelope["percept"]["profile"]["id"], "qsol-map-fixed-fft-v0.1")
+        self.assertEqual(
+            envelope["percept"]["implementation"],
+            "qsol-map-python-reference-0.1.0",
+        )
+        self.assertTrue(verify_percept_envelope(envelope))
+
     def test_repeated_analysis_is_byte_identical(self):
         samples = [1000 if (index // 16) % 2 == 0 else -1000 for index in range(512)]
         wave = parse_pcm16_wav(make_wav(samples))

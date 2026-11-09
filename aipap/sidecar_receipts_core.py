@@ -1,4 +1,4 @@
-"""QSOL-MAP v0.2 sidecar API with final reconstructed-evidence bindings."""
+"""AIPAP v0.2 sidecar API with final reconstructed-evidence bindings."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ for _name in dir(_consistency):
         globals()[_name] = getattr(_consistency, _name)
 
 
-_DECODE_FAILURE_SENTINEL = "__qsol_map_invalid_decode__\n"
+_DECODE_FAILURE_SENTINEL = "__aipap_invalid_decode__\n"
 
 
 def _preserving_bounded_lines(lines: Iterable[str]):

@@ -5,8 +5,8 @@ import struct
 import tempfile
 import unittest
 
-import qsol_map
-from qsol_map.__main__ import main
+import aipap
+from aipap.__main__ import main
 
 
 def make_wav(samples):
@@ -19,7 +19,7 @@ def make_wav(samples):
 
 class CliTests(unittest.TestCase):
     def test_package_version_matches_v02(self):
-        self.assertEqual(qsol_map.__version__, "0.2.0")
+        self.assertEqual(aipap.__version__, "0.2.0")
 
     def test_analyze_writes_exact_envelope_file(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -1,4 +1,4 @@
-# QSOL-MAP Roadmap
+# AIPAP Roadmap
 
 ## v0.1.0 - Protocol foundation and deterministic L1 reference
 

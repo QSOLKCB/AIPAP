@@ -1,4 +1,4 @@
-"""Strict PCM16 RIFF/WAVE input adapter for the QSOL-MAP reference profile."""
+"""Strict PCM16 RIFF/WAVE input adapter for the AIPAP reference profile."""
 
 from __future__ import annotations
 

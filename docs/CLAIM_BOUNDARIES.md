@@ -1,6 +1,6 @@
 # Claim Boundaries
 
-## What QSOL-MAP v0.1.0 may claim
+## What AIPAP v0.1.0 may claim
 
 For an accepted PCM16 RIFF/WAVE input and the frozen `qsol-map-fixed-fft-v0.1` profile, the reference implementation may claim that:
 
@@ -16,12 +16,12 @@ For an accepted PCM16 RIFF/WAVE input and the frozen `qsol-map-fixed-fft-v0.1` p
 
 The v0.1 profile remains unchanged by v0.2.
 
-## What QSOL-MAP v0.2.0 additionally may claim
+## What AIPAP v0.2.0 additionally may claim
 
 For an accepted source and `qsol-map-multiresolution-v0.2`, the reference implementation may additionally claim that:
 
 1. the frozen v0.1 percept and per-channel matrix identities are carried forward as the short reference;
-2. a separate deterministic 1024-sample / 512-hop long reference uses the exact normative table and FFT algorithm in `spec/QSOL-MAP-MULTIRES-v0.2.md`, with exact unbounded-integer arithmetic;
+2. a separate deterministic 1024-sample / 512-hop long reference uses the exact normative table and FFT algorithm in `spec/AIPAP-MULTIRES-v0.2.md`, with exact unbounded-integer arithmetic;
 3. long complex/power matrices have independent commitments, represented bins are retained to Nyquist without psychoacoustic filtering, and the authored 20/40 kHz region subtotals are derived from those bins;
 4. the versioned `energy-rise-3-over-2-v0.2` rule produces deterministic candidates from frozen short energies, with null ratios for zero previous energy;
 5. energies and summaries obey source/window bounds, transition multiplicity, deterministic top-16 ordering, omitted-candidate adjacency and classification-aware mass capacities;
@@ -45,7 +45,7 @@ For an accepted source and `qsol-map-multiresolution-v0.2`, the reference implem
 
 These are implementation conformance claims within the boundaries below, not a blanket proof of arbitrary-length compact waveform realizability.
 
-## What QSOL-MAP v0.2.0 does not claim
+## What AIPAP v0.2.0 does not claim
 
 It does not claim:
 

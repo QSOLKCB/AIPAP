@@ -1,6 +1,6 @@
 import unittest
 
-from qsol_map.canonical import CanonicalizationError, canonical_bytes, domain_sha256
+from aipap.canonical import CanonicalizationError, canonical_bytes, domain_sha256
 
 
 class CanonicalTests(unittest.TestCase):

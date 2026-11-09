@@ -5,9 +5,9 @@ import struct
 import unittest
 from pathlib import Path
 
-from qsol_map import multiresolution as mr
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.wav import parse_pcm16_wav
+from aipap import multiresolution as mr
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.wav import parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1):
@@ -167,7 +167,7 @@ class TransformAndCrossEvidenceTests(unittest.TestCase):
             "ROADMAP.md",
             "docs/ARCHITECTURE.md",
             "docs/CLAIM_BOUNDARIES.md",
-            "spec/QSOL-MAP-MULTIRES-v0.2.md",
+            "spec/AIPAP-MULTIRES-v0.2.md",
         )
         marker = "per-bin coefficient divisors"
         for path in required:

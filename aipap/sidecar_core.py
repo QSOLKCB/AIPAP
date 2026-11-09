@@ -1,4 +1,4 @@
-"""Streaming full-spectral sidecar for QSOL-MAP v0.2."""
+"""Streaming full-spectral sidecar for AIPAP v0.2."""
 
 from __future__ import annotations
 

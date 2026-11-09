@@ -1,4 +1,4 @@
-"""Deterministic Layer-1 acoustic observation reference for QSOL-MAP."""
+"""Deterministic Layer-1 acoustic observation reference for AIPAP."""
 
 from __future__ import annotations
 

@@ -1,8 +1,8 @@
-# QSOL-MAP - AI Context
+# AIPAP - AI Context
 
 ## Mission
 
-QSOL-MAP defines a layered machine-audio observation protocol. Keep physical/source identity, deterministic signal observations, learned tokens, semantic interpretation, and human reports epistemically separate.
+AIPAP defines a layered machine-audio observation protocol. Keep physical/source identity, deterministic signal observations, learned tokens, semantic interpretation, and human reports epistemically separate.
 
 ## Non-negotiable invariant
 
@@ -148,17 +148,17 @@ No SoundStream code or model weights are vendored.
 Frozen v0.1:
 
 ```bash
-python3 -m qsol_map analyze input.wav -o percept-v01.json
-python3 -m qsol_map verify percept-v01.json
+python3 -m aipap analyze input.wav -o percept-v01.json
+python3 -m aipap verify percept-v01.json
 ```
 
 v0.2:
 
 ```bash
-python3 -m qsol_map analyze-v0.2 input.wav -o percept-v02.json
-python3 -m qsol_map analyze-v0.2 input.wav -o percept-v02.json --sidecar spectral-v02.ndjson
-python3 -m qsol_map verify-v0.2 percept-v02.json
-python3 -m qsol_map verify-sidecar-v0.2 percept-v02.json spectral-v02.ndjson
+python3 -m aipap analyze-v0.2 input.wav -o percept-v02.json
+python3 -m aipap analyze-v0.2 input.wav -o percept-v02.json --sidecar spectral-v02.ndjson
+python3 -m aipap verify-v0.2 percept-v02.json
+python3 -m aipap verify-sidecar-v0.2 percept-v02.json spectral-v02.ndjson
 ```
 
 Output collisions are rejected before writing, including case-equivalent and Unicode-normalization-equivalent initially nonexistent names when the target filesystem aliases those names.

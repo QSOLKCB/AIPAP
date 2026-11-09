@@ -4,14 +4,14 @@ import json
 import struct
 import unittest
 
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.multiresolution import (
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.multiresolution import (
     LONG_FRAME_SIZE,
     PERCEPT_DOMAIN,
     build_multiresolution_percept,
     verify_multiresolution_envelope,
 )
-from qsol_map.sidecar import (
+from aipap.sidecar import (
     SIDECAR_HEADER_DOMAIN,
     SIDECAR_RECEIPT_DOMAIN,
     SIDECAR_RECORDS_DOMAIN,
@@ -20,7 +20,7 @@ from qsol_map.sidecar import (
     verify_spectral_sidecar,
     write_spectral_sidecar,
 )
-from qsol_map.wav import parse_pcm16_wav
+from aipap.wav import parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1):

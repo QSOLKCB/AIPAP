@@ -1,6 +1,6 @@
 # Optimization Policy
 
-QSOL-MAP uses QSOLKCB/OPT as the first reference for performance work.
+AIPAP uses QSOLKCB/OPT as the first reference for performance work.
 
 ## Current CI choices
 
@@ -15,7 +15,7 @@ CI deliberately uses:
 
 This removes setup and matrix overhead without introducing a documentation-only bypass or skipping semantic coverage.
 
-There is no published portable QSOL-MAP CI speedup claim. Correctness remains the gate.
+There is no published portable AIPAP CI speedup claim. Correctness remains the gate.
 
 ## v0.2 reference workload
 

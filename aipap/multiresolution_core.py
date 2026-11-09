@@ -1,4 +1,4 @@
-"""QSOL-MAP v0.2 multi-resolution deterministic Layer-1 observation."""
+"""AIPAP v0.2 multi-resolution deterministic Layer-1 observation."""
 
 from __future__ import annotations
 

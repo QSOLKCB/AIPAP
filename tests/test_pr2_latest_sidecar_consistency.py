@@ -6,15 +6,15 @@ import struct
 import tempfile
 import unittest
 
-import qsol_map.sidecar as sidecar
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.multiresolution import (
+import aipap.sidecar as sidecar
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.multiresolution import (
     LONG_COMPLEX_MATRIX_DOMAIN,
     PERCEPT_DOMAIN,
     build_multiresolution_percept,
     verify_multiresolution_envelope,
 )
-from qsol_map.wav import parse_pcm16_wav
+from aipap.wav import parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1):

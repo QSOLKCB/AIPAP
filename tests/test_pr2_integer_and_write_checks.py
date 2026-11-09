@@ -8,15 +8,15 @@ from math import isqrt
 from types import SimpleNamespace
 import unittest
 
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.integer_checks import (
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.integer_checks import (
     _joint_vectors_match_gram,
     _sum_of_two_squares_residues_possible,
     _three_sample_vectors,
 )
-from qsol_map import multiresolution as mr
-from qsol_map import sidecar
-from qsol_map.wav import parse_pcm16_wav
+from aipap import multiresolution as mr
+from aipap import sidecar
+from aipap.wav import parse_pcm16_wav
 from test_pr2_live_review_fixes import make_wav
 
 

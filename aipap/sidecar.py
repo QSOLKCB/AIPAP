@@ -1,4 +1,4 @@
-"""QSOL-MAP v0.2 sidecar API with writer and verifier hardening."""
+"""AIPAP v0.2 sidecar API with writer and verifier hardening."""
 
 from __future__ import annotations
 

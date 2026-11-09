@@ -6,16 +6,16 @@ import threading
 import unittest
 from pathlib import Path
 
-import qsol_map.__main__ as cli_module
-import qsol_map.sidecar as sidecar_module
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.multiresolution import (
+import aipap.__main__ as cli_module
+import aipap.sidecar as sidecar_module
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.multiresolution import (
     PERCEPT_DOMAIN,
     build_multiresolution_percept,
     verify_multiresolution_envelope,
 )
-from qsol_map.sidecar import write_spectral_sidecar
-from qsol_map.wav import parse_pcm16_wav
+from aipap.sidecar import write_spectral_sidecar
+from aipap.wav import parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1):

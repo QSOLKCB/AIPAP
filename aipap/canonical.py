@@ -1,4 +1,4 @@
-"""Canonical serialization and domain-separated hashing for QSOL-MAP."""
+"""Canonical serialization and domain-separated hashing for AIPAP."""
 
 from __future__ import annotations
 

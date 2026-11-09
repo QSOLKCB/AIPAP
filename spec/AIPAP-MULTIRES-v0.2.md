@@ -1,4 +1,4 @@
-# QSOL-MAP Multi-Resolution Deterministic Observation v0.2
+# AIPAP Multi-Resolution Deterministic Observation v0.2
 
 Status: **reference profile candidate for repository release v0.2.0**
 
@@ -553,10 +553,10 @@ PCM16Wave does not retain original RIFF bytes; sample commitment validation does
 ## 12. CLI
 
 ```bash
-python3 -m qsol_map analyze-v0.2 input.wav -o percept-v02.json
-python3 -m qsol_map analyze-v0.2 input.wav -o percept-v02.json --sidecar spectral-v02.ndjson
-python3 -m qsol_map verify-v0.2 percept-v02.json
-python3 -m qsol_map verify-sidecar-v0.2 percept-v02.json spectral-v02.ndjson
+python3 -m aipap analyze-v0.2 input.wav -o percept-v02.json
+python3 -m aipap analyze-v0.2 input.wav -o percept-v02.json --sidecar spectral-v02.ndjson
+python3 -m aipap verify-v0.2 percept-v02.json
+python3 -m aipap verify-sidecar-v0.2 percept-v02.json spectral-v02.ndjson
 ```
 
 Percept and sidecar outputs must identify different destinations and must not alias the input or implicit stdout as applicable. Existing aliases use filesystem identity. Initially nonexistent names are checked for filesystem case folding and Unicode normalization equivalence, including NFC/NFD spellings such as precomposed/decomposed `é`. The CLI reserves nontruncating regular-file handles, validates identities before writes, and writes through held descriptors rather than reopening replacement pathnames after analysis. A changed reserved path fails rather than being followed. This is not an atomic multi-file transaction.
@@ -564,8 +564,8 @@ Percept and sidecar outputs must identify different destinations and must not al
 Frozen v0.1 commands remain:
 
 ```bash
-python3 -m qsol_map analyze input.wav -o percept-v01.json
-python3 -m qsol_map verify percept-v01.json
+python3 -m aipap analyze input.wav -o percept-v01.json
+python3 -m aipap verify percept-v01.json
 ```
 
 ## 13. Golden vectors

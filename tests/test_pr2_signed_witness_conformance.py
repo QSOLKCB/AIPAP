@@ -6,10 +6,10 @@ import itertools
 from pathlib import Path
 import unittest
 
-from qsol_map import multiresolution as mr
-from qsol_map.short_source_witnesses import short_source_vectors, vectors_have_joint_gram
-from qsol_map.sidecar import write_spectral_sidecar, verify_spectral_sidecar
-from qsol_map.wav import parse_pcm16_wav
+from aipap import multiresolution as mr
+from aipap.short_source_witnesses import short_source_vectors, vectors_have_joint_gram
+from aipap.sidecar import write_spectral_sidecar, verify_spectral_sidecar
+from aipap.wav import parse_pcm16_wav
 from test_pr2_event_totals_and_short_gram import envelope_for
 from test_pr2_live_review_fixes import make_wav, rehash
 
@@ -137,7 +137,7 @@ class DivisorScopeTests(unittest.TestCase):
     def test_required_docs_state_multi_event_and_short_signed_witness_scope(self):
         root = Path(__file__).resolve().parents[1]
         for name in ("README.md", "README4AI.md", "ROADMAP.md", "docs/ARCHITECTURE.md",
-                     "docs/CLAIM_BOUNDARIES.md", "spec/QSOL-MAP-MULTIRES-v0.2.md"):
+                     "docs/CLAIM_BOUNDARIES.md", "spec/AIPAP-MULTIRES-v0.2.md"):
             text = (root / name).read_text(encoding="utf-8")
             with self.subTest(document=name):
                 for marker in ("per-bin coefficient divisors", "multi-event", "2^64", "four-frame", "8.2"):

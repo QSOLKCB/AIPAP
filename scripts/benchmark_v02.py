@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Environment-scoped benchmark harness for QSOL-MAP v0.2.
+"""Environment-scoped benchmark harness for AIPAP v0.2.
 
 This script is intentionally not a CI performance gate. It records enough
 runtime context to make a local timing observation useful without promoting it
@@ -21,8 +21,8 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
 
-from qsol_map.multiresolution import build_multiresolution_percept
-from qsol_map.wav import parse_pcm16_wav
+from aipap.multiresolution import build_multiresolution_percept
+from aipap.wav import parse_pcm16_wav
 
 
 def make_fixture(frame_count: int, sample_rate: int) -> bytes:

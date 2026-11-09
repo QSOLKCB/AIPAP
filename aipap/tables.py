@@ -1,4 +1,4 @@
-"""Frozen integer constants for QSOL-MAP fixed FFT profile v0.1.
+"""Frozen integer constants for AIPAP fixed FFT profile v0.1.
 
 Runtime analysis performs no trigonometric floating-point evaluation.
 """
