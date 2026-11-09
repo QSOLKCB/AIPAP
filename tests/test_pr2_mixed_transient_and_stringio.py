@@ -4,9 +4,9 @@ import copy
 import io
 import unittest
 
-from qsol_map import multiresolution as mr
-from qsol_map import sidecar
-from qsol_map.wav import parse_pcm16_wav
+from aipap import multiresolution as mr
+from aipap import sidecar
+from aipap.wav import parse_pcm16_wav
 from test_pr2_live_review_fixes import make_wav, rehash
 
 

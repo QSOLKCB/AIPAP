@@ -1,4 +1,4 @@
-"""QSOL-MAP v0.2 verifier surface with latest compact hardening."""
+"""AIPAP v0.2 verifier surface with latest compact hardening."""
 
 from __future__ import annotations
 

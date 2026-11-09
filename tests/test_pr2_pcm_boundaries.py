@@ -9,15 +9,15 @@ import struct
 import unittest
 from unittest import mock
 
-import qsol_map.multiresolution as multiresolution
-import qsol_map.sidecar as sidecar
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.pcm_constraints import (
+import aipap.multiresolution as multiresolution
+import aipap.sidecar as sidecar
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.pcm_constraints import (
     _small_window_energy_is_realizable,
     _validate_wave_pcm_commitment,
 )
-from qsol_map.v02_tables import TWIDDLE_COS_QUARTER_Q15_1024
-from qsol_map.wav import PCM16Wave, parse_pcm16_wav
+from aipap.v02_tables import TWIDDLE_COS_QUARTER_Q15_1024
+from aipap.wav import PCM16Wave, parse_pcm16_wav
 
 
 def make_wav(samples, channels=1, sample_rate=48000):
@@ -220,7 +220,7 @@ class WriterPCMCommitmentTests(unittest.TestCase):
 
 class NormativeLongFFTTests(unittest.TestCase):
     def test_published_algorithm_reproduces_complete_reference_rows(self):
-        path = Path(__file__).resolve().parents[1] / "spec" / "QSOL-MAP-MULTIRES-v0.2.md"
+        path = Path(__file__).resolve().parents[1] / "spec" / "AIPAP-MULTIRES-v0.2.md"
         specification = path.read_text(encoding="utf-8")
         section = specification.split("## 4. Frozen long-window twiddles\n", 1)[1]
         table_text = section.split("```text\n", 1)[1].split("```", 1)[0]

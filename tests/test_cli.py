@@ -5,8 +5,8 @@ import struct
 import tempfile
 import unittest
 
-import qsol_map
-from qsol_map.__main__ import main
+import aipap
+from aipap.__main__ import main
 
 
 def make_wav(samples):
@@ -19,7 +19,7 @@ def make_wav(samples):
 
 class CliTests(unittest.TestCase):
     def test_package_version_matches_v02(self):
-        self.assertEqual(qsol_map.__version__, "0.2.0")
+        self.assertEqual(aipap.__version__, "0.2.0")
 
     def test_analyze_writes_exact_envelope_file(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -30,7 +30,7 @@ class CliTests(unittest.TestCase):
 
             self.assertEqual(main(["analyze", str(source), "-o", str(output)]), 0)
             envelope = json.loads(output.read_text(encoding="utf-8"))
-            self.assertEqual(envelope["schema"], "qsol-map-percept-envelope-v0.1")
+            self.assertEqual(envelope["schema"], "aipap-percept-envelope-v0.1")
             self.assertEqual(main(["verify", str(output)]), 0)
 
     def test_v02_analyze_verify_and_sidecar_round_trip(self):
@@ -53,7 +53,7 @@ class CliTests(unittest.TestCase):
                 0,
             )
             envelope = json.loads(output.read_text(encoding="utf-8"))
-            self.assertEqual(envelope["schema"], "qsol-map-percept-envelope-v0.2")
+            self.assertEqual(envelope["schema"], "aipap-percept-envelope-v0.2")
             self.assertEqual(main(["verify-v0.2", str(output)]), 0)
             self.assertEqual(
                 main(["verify-sidecar-v0.2", str(output), str(sidecar)]),

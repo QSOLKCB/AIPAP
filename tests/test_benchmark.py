@@ -24,7 +24,7 @@ class BenchmarkHarnessTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
-        self.assertEqual(payload["benchmark"], "qsol-map-v0.2-reference-compact-percept")
+        self.assertEqual(payload["benchmark"], "aipap-v0.2-reference-compact-percept")
         self.assertEqual(payload["frames"], 64)
         self.assertEqual(payload["repeats"], 1)
         self.assertEqual(

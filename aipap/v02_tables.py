@@ -1,4 +1,4 @@
-"""Frozen integer constants for QSOL-MAP long-window profile v0.2.
+"""Frozen integer constants for AIPAP long-window profile v0.2.
 
 The quarter-wave cosine table is generated once at design time and committed.
 Runtime analysis performs no trigonometric floating-point evaluation.

@@ -1,4 +1,4 @@
-"""QSOL-MAP v0.2 sidecar API with final reconstructed-evidence bindings."""
+"""AIPAP v0.2 sidecar API with final reconstructed-evidence bindings."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ for _name in dir(_consistency):
         globals()[_name] = getattr(_consistency, _name)
 
 
-_DECODE_FAILURE_SENTINEL = "__qsol_map_invalid_decode__\n"
+_DECODE_FAILURE_SENTINEL = "__aipap_invalid_decode__\n"
 
 
 def _preserving_bounded_lines(lines: Iterable[str]):
@@ -250,7 +250,7 @@ class _EvidenceCapture(_consistency._EvidenceCapture):
         write(b',"profile":')
         write(canonical_bytes(profile))
         write(b',"schema":')
-        write(canonical_bytes("qsol-map-percept-core-v0.1"))
+        write(canonical_bytes("aipap-percept-core-v0.1"))
         write(b',"source":')
         write(canonical_bytes(self.envelope["percept"]["source"]))
         write(b"}")

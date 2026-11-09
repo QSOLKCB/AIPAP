@@ -6,14 +6,14 @@ import tempfile
 import unittest
 from unittest import mock
 
-from qsol_map import __main__ as cli_module
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.multiresolution import (
+from aipap import __main__ as cli_module
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.multiresolution import (
     PERCEPT_DOMAIN,
     build_multiresolution_percept,
     verify_multiresolution_envelope,
 )
-from qsol_map.wav import parse_pcm16_wav
+from aipap.wav import parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1):

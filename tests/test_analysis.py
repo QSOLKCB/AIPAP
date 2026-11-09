@@ -2,14 +2,14 @@ import copy
 import struct
 import unittest
 
-from qsol_map.analysis import (
+from aipap.analysis import (
     PERCEPT_DOMAIN,
     build_percept,
     verify_percept_envelope,
 )
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.tables import FRAME_SIZE
-from qsol_map.wav import parse_pcm16_wav
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.tables import FRAME_SIZE
+from aipap.wav import parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1):
@@ -58,15 +58,15 @@ class AnalysisTests(unittest.TestCase):
         channel = envelope["percept"]["channels"][0]
         self.assertEqual(
             envelope["percept_sha256"],
-            "e7ec380529d01790981e819bf5f33f8c251a6c89caafe19458b9053ae573b49c",
+            "30c8db5a0edfd30f8ddc1585bb94dbaf171237f8a9089bfaf22c70814d9586d9",
         )
         self.assertEqual(
             channel["power_matrix_sha256"],
-            "6eb7ebeb2730da6ed111e6207dfc148217f89bb5272084a079b96f39fb487291",
+            "98c928329da4648d609a2553e9552ac2b764ff07c99ef623c951c17c88ba3d6b",
         )
         self.assertEqual(
             channel["complex_matrix_sha256"],
-            "cf4033b613f024f67e0a61938958599b1e09c3178b8bb618fd13c14e940ecc27",
+            "f09db762b2c9117604e7ecd83eac8415a34a7c7e1c28664bd707cf205c052e41",
         )
 
     def test_tamper_rejected(self):
@@ -85,11 +85,11 @@ class AnalysisTests(unittest.TestCase):
 
     def test_structurally_invalid_core_is_rejected_even_with_matching_hash(self):
         percept = {
-            "schema": "qsol-map-percept-core-v0.1",
+            "schema": "aipap-percept-core-v0.1",
             "layer": "L3_semantic_interpretation",
         }
         envelope = {
-            "schema": "qsol-map-percept-envelope-v0.1",
+            "schema": "aipap-percept-envelope-v0.1",
             "percept": percept,
             "percept_sha256": domain_sha256(PERCEPT_DOMAIN, canonical_bytes(percept)),
         }

@@ -4,14 +4,14 @@ import json
 import struct
 import unittest
 
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.multiresolution import (
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.multiresolution import (
     LONG_FRAME_SIZE,
     PERCEPT_DOMAIN,
     build_multiresolution_percept,
     verify_multiresolution_envelope,
 )
-from qsol_map.sidecar import (
+from aipap.sidecar import (
     SIDECAR_HEADER_DOMAIN,
     SIDECAR_RECEIPT_DOMAIN,
     SIDECAR_RECORDS_DOMAIN,
@@ -20,7 +20,7 @@ from qsol_map.sidecar import (
     verify_spectral_sidecar,
     write_spectral_sidecar,
 )
-from qsol_map.wav import parse_pcm16_wav
+from aipap.wav import parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1):
@@ -54,7 +54,7 @@ class MultiResolutionTests(unittest.TestCase):
         envelope = build_multiresolution_percept(wave)
         self.assertEqual(
             envelope["percept"]["short_reference"]["percept_sha256"],
-            "e7ec380529d01790981e819bf5f33f8c251a6c89caafe19458b9053ae573b49c",
+            "30c8db5a0edfd30f8ddc1585bb94dbaf171237f8a9089bfaf22c70814d9586d9",
         )
 
     def test_v02_repeated_analysis_is_byte_identical_and_valid(self):
@@ -71,7 +71,7 @@ class MultiResolutionTests(unittest.TestCase):
         envelope = build_multiresolution_percept(wave)
         self.assertEqual(
             envelope["percept_sha256"],
-            "c167694d60661ceac1d01d6504cbd8b5db77286ce09b28a342629b03046735d7",
+            "f1c7521489114c89511bc5048516bf43bd2a60f59de4f06cdab258d2e4379e1a",
         )
 
     def test_long_constant_signal_keeps_dc_dominant(self):

@@ -1,4 +1,4 @@
-"""Command-line interface for the dependency-free QSOL-MAP reference."""
+"""Command-line interface for the dependency-free AIPAP reference."""
 
 from __future__ import annotations
 
@@ -120,7 +120,7 @@ def _filesystem_case_insensitive(directory: Path) -> bool:
     try:
         directory = directory.resolve(strict=True)
         with tempfile.NamedTemporaryFile(
-            prefix="QsolMapCaseProbeAa",
+            prefix="AipapCaseProbeAa",
             dir=directory,
             delete=False,
         ) as probe:
@@ -145,7 +145,7 @@ def _filesystem_normalization_insensitive(directory: Path) -> bool:
     try:
         directory = directory.resolve(strict=True)
         with tempfile.NamedTemporaryFile(
-            prefix="QsolMapNormProbe-é-",
+            prefix="AipapNormProbe-é-",
             dir=directory,
             delete=False,
         ) as probe:
@@ -319,7 +319,7 @@ def _analyze_v02(input_path: Path, output_path: Path | None, sidecar_path: Path 
 def _verify(input_path: Path) -> int:
     envelope = json.loads(input_path.read_text(encoding="utf-8"))
     if not verify_percept_envelope(envelope):
-        print("invalid QSOL-MAP percept envelope", file=sys.stderr)
+        print("invalid AIPAP percept envelope", file=sys.stderr)
         return 1
     print(envelope["percept_sha256"])
     return 0
@@ -328,7 +328,7 @@ def _verify(input_path: Path) -> int:
 def _verify_v02(input_path: Path) -> int:
     envelope = json.loads(input_path.read_text(encoding="utf-8"))
     if not verify_multiresolution_envelope(envelope):
-        print("invalid QSOL-MAP v0.2 percept envelope", file=sys.stderr)
+        print("invalid AIPAP v0.2 percept envelope", file=sys.stderr)
         return 1
     print(envelope["percept_sha256"])
     return 0
@@ -339,7 +339,7 @@ def _verify_sidecar(percept_path: Path, sidecar_path: Path) -> int:
     with sidecar_path.open("r", encoding="utf-8", newline="") as stream:
         valid = verify_spectral_sidecar(envelope, stream)
     if not valid:
-        print("invalid QSOL-MAP v0.2 spectral sidecar", file=sys.stderr)
+        print("invalid AIPAP v0.2 spectral sidecar", file=sys.stderr)
         return 1
     print(envelope["percept_sha256"])
     return 0
@@ -347,8 +347,8 @@ def _verify_sidecar(percept_path: Path, sidecar_path: Path) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="python -m qsol_map",
-        description="QSOL-MAP deterministic machine-audio observation reference",
+        prog="python -m aipap",
+        description="AIPAP deterministic machine-audio observation reference",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 

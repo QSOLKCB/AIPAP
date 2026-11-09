@@ -1,4 +1,4 @@
-"""QSOL-MAP v0.2 sidecar API with cross-profile evidence consistency checks."""
+"""AIPAP v0.2 sidecar API with cross-profile evidence consistency checks."""
 
 from __future__ import annotations
 

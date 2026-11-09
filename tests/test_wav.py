@@ -1,7 +1,7 @@
 import struct
 import unittest
 
-from qsol_map.wav import WavFormatError, parse_pcm16_wav
+from aipap.wav import WavFormatError, parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1, fmt_extra=b""):

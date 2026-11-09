@@ -1,4 +1,4 @@
-"""QSOL-MAP v0.2 multi-resolution reference with verifier hardening."""
+"""AIPAP v0.2 multi-resolution reference with verifier hardening."""
 
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ from .v02_tables import (
 )
 
 
-_ORIGINAL_VALIDATOR_ATTR = "_qsol_map_v02_original_validate_percept_core"
+_ORIGINAL_VALIDATOR_ATTR = "_aipap_v02_original_validate_percept_core"
 if not hasattr(_core, _ORIGINAL_VALIDATOR_ATTR):
     setattr(_core, _ORIGINAL_VALIDATOR_ATTR, _core._validate_percept_core)
 _original_validate_percept_core = getattr(_core, _ORIGINAL_VALIDATOR_ATTR)

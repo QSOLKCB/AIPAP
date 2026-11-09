@@ -8,22 +8,22 @@ import sys
 import tempfile
 import unittest
 
-import qsol_map.sidecar as sidecar_module
-from qsol_map.__main__ import _analyze_v02
-from qsol_map.canonical import canonical_bytes, domain_sha256
-from qsol_map.multiresolution import (
+import aipap.sidecar as sidecar_module
+from aipap.__main__ import _analyze_v02
+from aipap.canonical import canonical_bytes, domain_sha256
+from aipap.multiresolution import (
     LONG_FRAME_SIZE,
     PERCEPT_DOMAIN,
     build_multiresolution_percept,
     verify_multiresolution_envelope,
 )
-from qsol_map.sidecar import (
+from aipap.sidecar import (
     SIDECAR_HEADER_DOMAIN,
     SIDECAR_RECEIPT_DOMAIN,
     verify_spectral_sidecar,
     write_spectral_sidecar,
 )
-from qsol_map.wav import parse_pcm16_wav
+from aipap.wav import parse_pcm16_wav
 
 
 def make_wav(samples, sample_rate=48000, channels=1):
@@ -347,11 +347,11 @@ class PR2ReviewHardeningTests(unittest.TestCase):
         trailer = write_spectral_sidecar(wave, envelope, stream)
         self.assertEqual(
             trailer["records_sha256"],
-            "4977b3532a47c7eaaa29a27ebee867b24bd015b949a3557f58486585ee729ecb",
+            "a557e91e6436a10045081707226ea57165d2a4b033976b8509129589bc92b7ce",
         )
         self.assertEqual(
             trailer["receipt_sha256"],
-            "fb5d65a221ef74c542ad542d2c1a8d7b5a48b9334a0c113a25ff0b75bdafe2fc",
+            "5db6441e6a0e8549d50b9534fc4ea8f691f6d8033883d2bfc1e989b66d199b06",
         )
 
 

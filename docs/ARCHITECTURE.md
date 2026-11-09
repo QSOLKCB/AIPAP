@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-QSOL-MAP defines a machine-native representation stack for audio without pretending that machine analysis and human hearing are the same phenomenon.
+AIPAP defines a machine-native representation stack for audio without pretending that machine analysis and human hearing are the same phenomenon.
 
 The protocol separates source identity, deterministic analysis, learned representation, semantic inference, and human report.
 
@@ -87,7 +87,7 @@ A result may carry explicit lineage to a lower layer, but it may not silently in
 
 ## 4. Frozen v0.1 data flow
 
-The published `qsol-map-fixed-fft-v0.1` profile remains unchanged:
+The published `aipap-fixed-fft-v0.1` profile remains unchanged:
 
 ```text
 WAV bytes
@@ -143,7 +143,7 @@ v0.2 extends L1 without mutating the v0.1 reference:
                     represented-frequency support
                                |
                                v
-                  qsol-map-multiresolution-v0.2
+                  aipap-multiresolution-v0.2
                                |
                   canonical percept SHA-256
                                |
@@ -160,7 +160,7 @@ The aggregate profile binds the frozen v0.1 percept hash and per-channel v0.1 ma
 
 ### Short reference
 
-`qsol-map-fixed-fft-v0.1`
+`aipap-fixed-fft-v0.1`
 
 - frame size: 256 samples;
 - hop: 128 samples;
@@ -170,7 +170,7 @@ The aggregate profile binds the frozen v0.1 percept hash and per-channel v0.1 ma
 
 ### Long reference
 
-`qsol-map-fixed-fft-1024-v0.2`
+`aipap-fixed-fft-1024-v0.2`
 
 - frame size: 1024 samples;
 - hop: 512 samples;
@@ -179,7 +179,7 @@ The aggregate profile binds the frozen v0.1 percept hash and per-channel v0.1 ma
 - frozen Q15 1024-point twiddles;
 - exact unbounded-integer Python reference arithmetic.
 
-The complete quarter-wave Q15 table, quadrant/sine reconstruction and long FFT are normative in `spec/QSOL-MAP-MULTIRES-v0.2.md`. Section 4.1 specifies ten-bit input reversal, widths 2 through 1024, `offset*(1024/width)` twiddle indices and exact scaled butterflies. Each butterfly scales the upper input by 32768 and combines it with the lower input times the committed twiddle. There is no per-stage division or final normalization. Bins 0..512 are retained in natural order. Conformance tests execute the published algorithm against complete coefficient rows.
+The complete quarter-wave Q15 table, quadrant/sine reconstruction and long FFT are normative in `spec/AIPAP-MULTIRES-v0.2.md`. Section 4.1 specifies ten-bit input reversal, widths 2 through 1024, `offset*(1024/width)` twiddle indices and exact scaled butterflies. Each butterfly scales the upper input by 32768 and combines it with the lower input times the committed twiddle. There is no per-stage division or final normalization. Bins 0..512 are retained in natural order. Conformance tests execute the published algorithm against complete coefficient rows.
 
 The same graph derives **per-bin coefficient divisors** for every long event. Input real divisors start at 1 and imaginary divisors at 0 (identically zero). Multiplication scales by the absolute Q15 factor; sums/differences take the gcd. Every reported event component obeys the resulting `D_real[k]` and `D_imag[k]`, with divisor zero requiring zero. Every aggregate bin, including multi-event sums, obeys `g[k]=gcd(D_real[k]^2,D_imag[k]^2)` because each summand does. Each event denominator obeys `gcd(g[k])=2^64`; each numerator obeys `gcd(k*g[k])`. These rules include bin 256 and ordinary bins such as bin 8. Section 4.2 defines them normatively.
 
@@ -252,7 +252,7 @@ These exact short-source feasibility checks do not verify unreported coefficient
 
 ## 10. Compact packet and complete sidecar evidence
 
-The compact packet contains aggregate/selected observations and commitments to full short/long matrices. The separately verified sidecar schema is `qsol-map-spectral-sidecar-v0.2`: one header, every short row, every long row, then a receipt trailer, in deterministic channel/frame order.
+The compact packet contains aggregate/selected observations and commitments to full short/long matrices. The separately verified sidecar schema is `aipap-spectral-sidecar-v0.2`: one header, every short row, every long row, then a receipt trailer, in deterministic channel/frame order.
 
 Every record is exact UTF-8 terminated by LF; CRLF is noncanonical even if text translation could hide it. Each coefficient is `["real","imag","power"]`, with bounded canonical decimals and exact `power=real^2+imag^2`.
 
@@ -296,7 +296,7 @@ Output collisions use open-file identities and filesystem case/normalization equ
 
 SoundStream uses a learned encoder, residual vector quantizer and decoder to map waveforms into compact quantized embeddings and reconstruct perceptually similar audio.
 
-QSOL-MAP keeps a different authority structure:
+AIPAP keeps a different authority structure:
 
 ```text
 L1 deterministic evidence
@@ -325,7 +325,7 @@ Those mappings are authored receivers. Their outputs are not intrinsic physical 
 
 ## 14. Optimization
 
-QSOL-MAP treats the deterministic Python implementation as the reference path.
+AIPAP treats the deterministic Python implementation as the reference path.
 
 Optimization work follows QSOLKCB/OPT:
 - precompute static structures;

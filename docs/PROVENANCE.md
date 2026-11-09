@@ -1,6 +1,6 @@
 # Provenance and Design Lineage
 
-QSOL-MAP is a new repository. It does not vendor code from the references below. Their role is methodological and architectural unless otherwise stated.
+AIPAP is a new repository. It does not vendor code from the references below. Their role is methodological and architectural unless otherwise stated.
 
 ## QSOL source lineage
 
@@ -66,7 +66,7 @@ Relevant optimization records:
 - OPT-PAR-001 bounded deterministic parallel execution;
 - OPT-LEAN-001 trust-preserving Lean dependency reuse.
 
-QSOL-MAP does not import historical speedup percentages as expected performance. Every optimization must be re-measured in this repository.
+AIPAP does not import historical speedup percentages as expected performance. Every optimization must be re-measured in this repository.
 
 ## Neural audio codec reference
 
@@ -83,11 +83,11 @@ Relevant ideas:
 - decoder reconstruction;
 - bitrate-scalable residual quantization.
 
-QSOL-MAP does not contain SoundStream source code, model weights, codebooks or a compatibility claim. SoundStream is cited as prior art and motivation for the future L2 learned-token layer.
+AIPAP does not contain SoundStream source code, model weights, codebooks or a compatibility claim. SoundStream is cited as prior art and motivation for the future L2 learned-token layer.
 
 ## Why provenance is pinned
 
 Mutable `main` branches are useful for development but weak evidence anchors. This document records exact commits/releases so later protocol discussions can distinguish:
 - what the source repository contained at the time of design;
-- what QSOL-MAP independently implemented;
+- what AIPAP independently implemented;
 - what remains proposed.

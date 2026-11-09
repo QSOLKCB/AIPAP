@@ -1,4 +1,4 @@
-# QSOL-MAP Roadmap
+# AIPAP Roadmap
 
 ## v0.1.0 - Protocol foundation and deterministic L1 reference
 
@@ -56,15 +56,15 @@
 Implemented profiles:
 
 ```text
-qsol-map-fixed-fft-v0.1          frozen short reference
-qsol-map-fixed-fft-1024-v0.2     long-window reference
-qsol-map-multiresolution-v0.2    aggregate L1 profile
+aipap-fixed-fft-v0.1          frozen short reference
+aipap-fixed-fft-1024-v0.2     long-window reference
+aipap-multiresolution-v0.2    aggregate L1 profile
 ```
 
 The optional full-evidence sidecar schema is:
 
 ```text
-qsol-map-spectral-sidecar-v0.2
+aipap-spectral-sidecar-v0.2
 ```
 
 Sidecar conformance includes exact UTF-8/LF record bytes, exact reconstruction of both spectral profiles to one PCM16 waveform, verification of the reconstructed interleaved PCM SHA-256, rebuild of the frozen v0.1 percept identity, and reconstruction of transient/channel observations.

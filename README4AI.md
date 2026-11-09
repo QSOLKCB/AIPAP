@@ -1,8 +1,8 @@
-# QSOL-MAP - AI Context
+# AIPAP - AI Context
 
 ## Mission
 
-QSOL-MAP defines a layered machine-audio observation protocol. Keep physical/source identity, deterministic signal observations, learned tokens, semantic interpretation, and human reports epistemically separate.
+AIPAP defines a layered machine-audio observation protocol. Keep physical/source identity, deterministic signal observations, learned tokens, semantic interpretation, and human reports epistemically separate.
 
 ## Non-negotiable invariant
 
@@ -24,7 +24,7 @@ Two L1 profiles are implemented.
 
 ### Frozen v0.1 short reference
 
-`qsol-map-fixed-fft-v0.1`
+`aipap-fixed-fft-v0.1`
 
 - strict RIFF/WAVE PCM format 1;
 - PCM16 little endian;
@@ -39,7 +39,7 @@ The v0.1 profile is frozen and must remain byte-identical to its published golde
 
 ### v0.2 multi-resolution reference
 
-`qsol-map-multiresolution-v0.2`
+`aipap-multiresolution-v0.2`
 
 The v0.2 profile imports the frozen v0.1 result and adds:
 
@@ -129,7 +129,7 @@ No SoundStream code or model weights are vendored.
 ## Development rules
 
 1. Preserve the L0-L4 layer boundary.
-2. Preserve frozen `qsol-map-fixed-fft-v0.1` behavior and golden vectors.
+2. Preserve frozen `aipap-fixed-fft-v0.1` behavior and golden vectors.
 3. Fail closed on unsupported canonical inputs and malformed verification data.
 4. Never insert floats into identity-bearing JSON.
 5. Large exact integers must be canonical decimal strings; untrusted decimal fields must be bounded before `int()` conversion.
@@ -148,17 +148,17 @@ No SoundStream code or model weights are vendored.
 Frozen v0.1:
 
 ```bash
-python3 -m qsol_map analyze input.wav -o percept-v01.json
-python3 -m qsol_map verify percept-v01.json
+python3 -m aipap analyze input.wav -o percept-v01.json
+python3 -m aipap verify percept-v01.json
 ```
 
 v0.2:
 
 ```bash
-python3 -m qsol_map analyze-v0.2 input.wav -o percept-v02.json
-python3 -m qsol_map analyze-v0.2 input.wav -o percept-v02.json --sidecar spectral-v02.ndjson
-python3 -m qsol_map verify-v0.2 percept-v02.json
-python3 -m qsol_map verify-sidecar-v0.2 percept-v02.json spectral-v02.ndjson
+python3 -m aipap analyze-v0.2 input.wav -o percept-v02.json
+python3 -m aipap analyze-v0.2 input.wav -o percept-v02.json --sidecar spectral-v02.ndjson
+python3 -m aipap verify-v0.2 percept-v02.json
+python3 -m aipap verify-sidecar-v0.2 percept-v02.json spectral-v02.ndjson
 ```
 
 Output collisions are rejected before writing, including case-equivalent and Unicode-normalization-equivalent initially nonexistent names when the target filesystem aliases those names.

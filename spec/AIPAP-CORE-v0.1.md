@@ -1,17 +1,17 @@
-# QSOL-MAP Fixed FFT Profile v0.1
+# AIPAP Fixed FFT Profile v0.1
 
 Status: **reference profile**
 
 Profile identifier:
 
 ```text
-qsol-map-fixed-fft-v0.1
+aipap-fixed-fft-v0.1
 ```
 
 Implementation identifier:
 
 ```text
-qsol-map-python-reference-0.1.0
+aipap-python-reference-0.1.0
 ```
 
 ## 1. Input adapter
@@ -218,8 +218,8 @@ uint64_be(len(canonical_row_bytes)) + canonical_row_bytes
 Domains:
 
 ```text
-QSOL-MAP/COMPLEX-MATRIX/v0.1
-QSOL-MAP/POWER-MATRIX/v0.1
+AIPAP/COMPLEX-MATRIX/v0.1
+AIPAP/POWER-MATRIX/v0.1
 ```
 
 The resulting SHA-256 digests commit to the full matrices without embedding the matrices in the compact percept packet.
@@ -263,7 +263,7 @@ Percept identity is:
 
 ```text
 SHA256(
-  UTF8("QSOL-MAP/PERCEPT/v0.1")
+  UTF8("AIPAP/PERCEPT/v0.1")
   + NUL
   + canonical_percept_core_bytes
 )
@@ -271,7 +271,7 @@ SHA256(
 
 The digest is stored outside the core in the envelope, avoiding a circular self-hash.
 
-Verification is fail-closed. A v0.1 verifier accepts only the v0.1 envelope and core schemas, the declared L1 layer, the supported profile and implementation identifiers, the required source/profile/channel/event structure, canonical field types, and lowercase 64-character hexadecimal SHA-256 strings. A matching percept digest alone is not sufficient to validate an arbitrary dictionary as a QSOL-MAP percept.
+Verification is fail-closed. A v0.1 verifier accepts only the v0.1 envelope and core schemas, the declared L1 layer, the supported profile and implementation identifiers, the required source/profile/channel/event structure, canonical field types, and lowercase 64-character hexadecimal SHA-256 strings. A matching percept digest alone is not sufficient to validate an arbitrary dictionary as a AIPAP percept.
 
 ## 15. Golden vector
 

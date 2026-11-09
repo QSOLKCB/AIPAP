@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: qsol-map-${{ github.workflow }}-${{ github.ref }}
+  group: aipap-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
         run: python3 --version
 
       - name: Compile Python sources
-        run: python3 -m compileall -q qsol_map tests
+        run: python3 -m compileall -q aipap tests
 
       - name: Run complete deterministic reference suite
         run: python3 -m unittest discover -s tests -v
