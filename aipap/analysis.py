@@ -19,11 +19,11 @@ from .tables import (
 )
 from .wav import PCM16Wave
 
-PROFILE_ID = "aipap-fixed-fft-v0.1"
-IMPLEMENTATION_ID = "aipap-python-reference-0.1.0"
-PERCEPT_DOMAIN = "AIPAP/PERCEPT/v0.1"
-COMPLEX_MATRIX_DOMAIN = "AIPAP/COMPLEX-MATRIX/v0.1"
-POWER_MATRIX_DOMAIN = "AIPAP/POWER-MATRIX/v0.1"
+PROFILE_ID = "qsol-map-fixed-fft-v0.1"
+IMPLEMENTATION_ID = "qsol-map-python-reference-0.1.0"
+PERCEPT_DOMAIN = "QSOL-MAP/PERCEPT/v0.1"
+COMPLEX_MATRIX_DOMAIN = "QSOL-MAP/COMPLEX-MATRIX/v0.1"
+POWER_MATRIX_DOMAIN = "QSOL-MAP/POWER-MATRIX/v0.1"
 
 _HEX64 = re.compile(r"[0-9a-f]{64}\Z", re.ASCII)
 _SIGNED_DECIMAL = re.compile(r"-?(?:0|[1-9][0-9]*)\Z", re.ASCII)
@@ -177,7 +177,7 @@ def _analyze_channel(samples: Sequence[int]) -> dict:
 def build_percept(wave: PCM16Wave) -> dict:
     """Build a deterministic Layer-1 percept envelope from parsed PCM16 audio."""
     percept = {
-        "schema": "aipap-percept-core-v0.1",
+        "schema": "qsol-map-percept-core-v0.1",
         "layer": "L1_deterministic_acoustic_observation",
         "implementation": IMPLEMENTATION_ID,
         "source": {
@@ -219,7 +219,7 @@ def build_percept(wave: PCM16Wave) -> dict:
 
     digest = domain_sha256(PERCEPT_DOMAIN, canonical_bytes(percept))
     return {
-        "schema": "aipap-percept-envelope-v0.1",
+        "schema": "qsol-map-percept-envelope-v0.1",
         "percept_sha256": digest,
         "percept": percept,
     }
@@ -346,7 +346,7 @@ def _validate_percept_core(percept: object) -> bool:
         {"schema", "layer", "implementation", "source", "profile", "channels", "interpretation"},
     ):
         return False
-    if percept["schema"] != "aipap-percept-core-v0.1":
+    if percept["schema"] != "qsol-map-percept-core-v0.1":
         return False
     if percept["layer"] != "L1_deterministic_acoustic_observation":
         return False
@@ -432,7 +432,7 @@ def _validate_percept_core(percept: object) -> bool:
 def verify_percept_envelope(envelope: dict) -> bool:
     if not _exact_keys(envelope, {"schema", "percept_sha256", "percept"}):
         return False
-    if envelope["schema"] != "aipap-percept-envelope-v0.1":
+    if envelope["schema"] != "qsol-map-percept-envelope-v0.1":
         return False
 
     percept = envelope["percept"]

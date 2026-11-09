@@ -54,7 +54,7 @@ class MultiResolutionTests(unittest.TestCase):
         envelope = build_multiresolution_percept(wave)
         self.assertEqual(
             envelope["percept"]["short_reference"]["percept_sha256"],
-            "30c8db5a0edfd30f8ddc1585bb94dbaf171237f8a9089bfaf22c70814d9586d9",
+            "e7ec380529d01790981e819bf5f33f8c251a6c89caafe19458b9053ae573b49c",
         )
 
     def test_v02_repeated_analysis_is_byte_identical_and_valid(self):
@@ -71,7 +71,7 @@ class MultiResolutionTests(unittest.TestCase):
         envelope = build_multiresolution_percept(wave)
         self.assertEqual(
             envelope["percept_sha256"],
-            "f1c7521489114c89511bc5048516bf43bd2a60f59de4f06cdab258d2e4379e1a",
+            "c167694d60661ceac1d01d6504cbd8b5db77286ce09b28a342629b03046735d7",
         )
 
     def test_long_constant_signal_keeps_dc_dominant(self):

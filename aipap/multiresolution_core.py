@@ -22,13 +22,13 @@ from .v02_tables import (
 )
 from .wav import PCM16Wave
 
-PROFILE_ID = "aipap-multiresolution-v0.2"
-LONG_PROFILE_ID = "aipap-fixed-fft-1024-v0.2"
-V01_PROFILE_ID = "aipap-fixed-fft-v0.1"
-IMPLEMENTATION_ID = "aipap-python-reference-0.2.0"
-PERCEPT_DOMAIN = "AIPAP/PERCEPT/v0.2"
-LONG_COMPLEX_MATRIX_DOMAIN = "AIPAP/LONG-COMPLEX-MATRIX/v0.2"
-LONG_POWER_MATRIX_DOMAIN = "AIPAP/LONG-POWER-MATRIX/v0.2"
+PROFILE_ID = "qsol-map-multiresolution-v0.2"
+LONG_PROFILE_ID = "qsol-map-fixed-fft-1024-v0.2"
+V01_PROFILE_ID = "qsol-map-fixed-fft-v0.1"
+IMPLEMENTATION_ID = "qsol-map-python-reference-0.2.0"
+PERCEPT_DOMAIN = "QSOL-MAP/PERCEPT/v0.2"
+LONG_COMPLEX_MATRIX_DOMAIN = "QSOL-MAP/LONG-COMPLEX-MATRIX/v0.2"
+LONG_POWER_MATRIX_DOMAIN = "QSOL-MAP/LONG-POWER-MATRIX/v0.2"
 ONSET_RULE_ID = "energy-rise-3-over-2-v0.2"
 AUDIBLE_REFERENCE_UPPER_HZ = 20_000
 ULTRASONIC_SPLIT_HZ = 40_000
@@ -329,7 +329,7 @@ def build_multiresolution_percept(wave: PCM16Wave) -> dict:
     ]
 
     percept = {
-        "schema": "aipap-percept-core-v0.2",
+        "schema": "qsol-map-percept-core-v0.2",
         "layer": "L1_deterministic_acoustic_observation",
         "implementation": IMPLEMENTATION_ID,
         "source": {
@@ -363,7 +363,7 @@ def build_multiresolution_percept(wave: PCM16Wave) -> dict:
                 "20_to_40khz_reference": {"lower_inclusive": 20_000, "upper_exclusive": 40_000},
                 "at_or_above_40khz_reference": {"lower_inclusive": 40_000, "upper_exclusive": None},
             },
-            "sidecar_schema": "aipap-spectral-sidecar-v0.2",
+            "sidecar_schema": "qsol-map-spectral-sidecar-v0.2",
         },
         "short_reference": {
             "percept_sha256": v01["percept_sha256"],
@@ -394,7 +394,7 @@ def build_multiresolution_percept(wave: PCM16Wave) -> dict:
     }
     digest = domain_sha256(PERCEPT_DOMAIN, canonical_bytes(percept))
     return {
-        "schema": "aipap-percept-envelope-v0.2",
+        "schema": "qsol-map-percept-envelope-v0.2",
         "percept_sha256": digest,
         "percept": percept,
     }
@@ -778,7 +778,7 @@ def _validate_percept_core(percept: object) -> bool:
         },
     ):
         return False
-    if percept["schema"] != "aipap-percept-core-v0.2" or percept["layer"] != "L1_deterministic_acoustic_observation":
+    if percept["schema"] != "qsol-map-percept-core-v0.2" or percept["layer"] != "L1_deterministic_acoustic_observation":
         return False
     if percept["implementation"] != IMPLEMENTATION_ID:
         return False
@@ -823,7 +823,7 @@ def _validate_percept_core(percept: object) -> bool:
             "20_to_40khz_reference": {"lower_inclusive": 20_000, "upper_exclusive": 40_000},
             "at_or_above_40khz_reference": {"lower_inclusive": 40_000, "upper_exclusive": None},
         },
-        "sidecar_schema": "aipap-spectral-sidecar-v0.2",
+        "sidecar_schema": "qsol-map-spectral-sidecar-v0.2",
     }
     if not _canonical_equal(percept["profile"], expected_profile):
         return False
@@ -872,7 +872,7 @@ def _validate_percept_core(percept: object) -> bool:
 def verify_multiresolution_envelope(envelope: dict) -> bool:
     if not _exact_keys(envelope, {"schema", "percept_sha256", "percept"}):
         return False
-    if envelope["schema"] != "aipap-percept-envelope-v0.2":
+    if envelope["schema"] != "qsol-map-percept-envelope-v0.2":
         return False
     digest = envelope["percept_sha256"]
     if not _hex_digest(digest):

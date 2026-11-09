@@ -250,7 +250,7 @@ class _EvidenceCapture(_consistency._EvidenceCapture):
         write(b',"profile":')
         write(canonical_bytes(profile))
         write(b',"schema":')
-        write(canonical_bytes("aipap-percept-core-v0.1"))
+        write(canonical_bytes("qsol-map-percept-core-v0.1"))
         write(b',"source":')
         write(canonical_bytes(self.envelope["percept"]["source"]))
         write(b"}")

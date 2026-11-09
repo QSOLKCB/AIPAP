@@ -5,13 +5,13 @@ Status: **reference profile**
 Profile identifier:
 
 ```text
-aipap-fixed-fft-v0.1
+qsol-map-fixed-fft-v0.1
 ```
 
 Implementation identifier:
 
 ```text
-aipap-python-reference-0.1.0
+qsol-map-python-reference-0.1.0
 ```
 
 ## 1. Input adapter
@@ -218,8 +218,8 @@ uint64_be(len(canonical_row_bytes)) + canonical_row_bytes
 Domains:
 
 ```text
-AIPAP/COMPLEX-MATRIX/v0.1
-AIPAP/POWER-MATRIX/v0.1
+QSOL-MAP/COMPLEX-MATRIX/v0.1
+QSOL-MAP/POWER-MATRIX/v0.1
 ```
 
 The resulting SHA-256 digests commit to the full matrices without embedding the matrices in the compact percept packet.
@@ -263,7 +263,7 @@ Percept identity is:
 
 ```text
 SHA256(
-  UTF8("AIPAP/PERCEPT/v0.1")
+  UTF8("QSOL-MAP/PERCEPT/v0.1")
   + NUL
   + canonical_percept_core_bytes
 )

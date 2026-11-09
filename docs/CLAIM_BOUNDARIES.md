@@ -2,7 +2,7 @@
 
 ## What AIPAP v0.1.0 may claim
 
-For an accepted PCM16 RIFF/WAVE input and the frozen `aipap-fixed-fft-v0.1` profile, the reference implementation may claim that:
+For an accepted PCM16 RIFF/WAVE input and the frozen `qsol-map-fixed-fft-v0.1` profile, the reference implementation may claim that:
 
 1. the complete input bytes are identified by SHA-256;
 2. the PCM data chunk is independently identified by SHA-256;
@@ -18,7 +18,7 @@ The v0.1 profile remains unchanged by v0.2.
 
 ## What AIPAP v0.2.0 additionally may claim
 
-For an accepted source and `aipap-multiresolution-v0.2`, the reference implementation may additionally claim that:
+For an accepted source and `qsol-map-multiresolution-v0.2`, the reference implementation may additionally claim that:
 
 1. the frozen v0.1 percept and per-channel matrix identities are carried forward as the short reference;
 2. a separate deterministic 1024-sample / 512-hop long reference uses the exact normative table and FFT algorithm in `spec/AIPAP-MULTIRES-v0.2.md`, with exact unbounded-integer arithmetic;
@@ -131,7 +131,7 @@ These checks are exact for the specified short-source Gram/energy/endpoint evide
 
 ## Sidecar boundary
 
-The optional `aipap-spectral-sidecar-v0.2` is complete spectral evidence for the declared transforms, not a replacement audio format.
+The optional `qsol-map-spectral-sidecar-v0.2` is complete spectral evidence for the declared transforms, not a replacement audio format.
 
 Verification checks deterministic order, typed positions, arithmetic, receipts and matrix commitments. It inverts both profiles to PCM16, validates overlap/window/tail constraints, requires identical waveforms, checks interleaved PCM SHA-256, rebuilds frozen-v0.1 identity and cross-checks long events, transients and relationships.
 

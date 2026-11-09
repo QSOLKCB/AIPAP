@@ -24,7 +24,7 @@ Two L1 profiles are implemented.
 
 ### Frozen v0.1 short reference
 
-`aipap-fixed-fft-v0.1`
+`qsol-map-fixed-fft-v0.1`
 
 - strict RIFF/WAVE PCM format 1;
 - PCM16 little endian;
@@ -39,7 +39,7 @@ The v0.1 profile is frozen and must remain byte-identical to its published golde
 
 ### v0.2 multi-resolution reference
 
-`aipap-multiresolution-v0.2`
+`qsol-map-multiresolution-v0.2`
 
 The v0.2 profile imports the frozen v0.1 result and adds:
 
@@ -129,7 +129,7 @@ No SoundStream code or model weights are vendored.
 ## Development rules
 
 1. Preserve the L0-L4 layer boundary.
-2. Preserve frozen `aipap-fixed-fft-v0.1` behavior and golden vectors.
+2. Preserve frozen `qsol-map-fixed-fft-v0.1` behavior and golden vectors.
 3. Fail closed on unsupported canonical inputs and malformed verification data.
 4. Never insert floats into identity-bearing JSON.
 5. Large exact integers must be canonical decimal strings; untrusted decimal fields must be bounded before `int()` conversion.

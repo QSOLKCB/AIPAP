@@ -87,7 +87,7 @@ A result may carry explicit lineage to a lower layer, but it may not silently in
 
 ## 4. Frozen v0.1 data flow
 
-The published `aipap-fixed-fft-v0.1` profile remains unchanged:
+The published `qsol-map-fixed-fft-v0.1` profile remains unchanged:
 
 ```text
 WAV bytes
@@ -143,7 +143,7 @@ v0.2 extends L1 without mutating the v0.1 reference:
                     represented-frequency support
                                |
                                v
-                  aipap-multiresolution-v0.2
+                  qsol-map-multiresolution-v0.2
                                |
                   canonical percept SHA-256
                                |
@@ -160,7 +160,7 @@ The aggregate profile binds the frozen v0.1 percept hash and per-channel v0.1 ma
 
 ### Short reference
 
-`aipap-fixed-fft-v0.1`
+`qsol-map-fixed-fft-v0.1`
 
 - frame size: 256 samples;
 - hop: 128 samples;
@@ -170,7 +170,7 @@ The aggregate profile binds the frozen v0.1 percept hash and per-channel v0.1 ma
 
 ### Long reference
 
-`aipap-fixed-fft-1024-v0.2`
+`qsol-map-fixed-fft-1024-v0.2`
 
 - frame size: 1024 samples;
 - hop: 512 samples;
@@ -252,7 +252,7 @@ These exact short-source feasibility checks do not verify unreported coefficient
 
 ## 10. Compact packet and complete sidecar evidence
 
-The compact packet contains aggregate/selected observations and commitments to full short/long matrices. The separately verified sidecar schema is `aipap-spectral-sidecar-v0.2`: one header, every short row, every long row, then a receipt trailer, in deterministic channel/frame order.
+The compact packet contains aggregate/selected observations and commitments to full short/long matrices. The separately verified sidecar schema is `qsol-map-spectral-sidecar-v0.2`: one header, every short row, every long row, then a receipt trailer, in deterministic channel/frame order.
 
 Every record is exact UTF-8 terminated by LF; CRLF is noncanonical even if text translation could hide it. Each coefficient is `["real","imag","power"]`, with bounded canonical decimals and exact `power=real^2+imag^2`.
 

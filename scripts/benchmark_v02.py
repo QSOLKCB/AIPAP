@@ -57,7 +57,7 @@ def main() -> int:
         raise RuntimeError("deterministic benchmark fixture produced different percept hashes")
 
     result = {
-        "benchmark": "aipap-v0.2-reference-compact-percept",
+        "benchmark": "qsol-map-v0.2-reference-compact-percept",
         "frames": args.frames,
         "sample_rate_hz": args.sample_rate,
         "repeats": args.repeats,

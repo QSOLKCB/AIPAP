@@ -30,7 +30,7 @@ class CliTests(unittest.TestCase):
 
             self.assertEqual(main(["analyze", str(source), "-o", str(output)]), 0)
             envelope = json.loads(output.read_text(encoding="utf-8"))
-            self.assertEqual(envelope["schema"], "aipap-percept-envelope-v0.1")
+            self.assertEqual(envelope["schema"], "qsol-map-percept-envelope-v0.1")
             self.assertEqual(main(["verify", str(output)]), 0)
 
     def test_v02_analyze_verify_and_sidecar_round_trip(self):
@@ -53,7 +53,7 @@ class CliTests(unittest.TestCase):
                 0,
             )
             envelope = json.loads(output.read_text(encoding="utf-8"))
-            self.assertEqual(envelope["schema"], "aipap-percept-envelope-v0.2")
+            self.assertEqual(envelope["schema"], "qsol-map-percept-envelope-v0.2")
             self.assertEqual(main(["verify-v0.2", str(output)]), 0)
             self.assertEqual(
                 main(["verify-sidecar-v0.2", str(output), str(sidecar)]),

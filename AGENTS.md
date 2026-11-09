@@ -31,7 +31,7 @@ Forbidden examples:
 
 ### Frozen v0.1
 
-For `aipap-fixed-fft-v0.1`:
+For `qsol-map-fixed-fft-v0.1`:
 
 - no runtime random input;
 - no runtime trigonometric functions;
@@ -46,7 +46,7 @@ The published v0.1 behavior and golden vectors are frozen. v0.2 must not alter t
 
 ### v0.2 multi-resolution L1
 
-For `aipap-multiresolution-v0.2` and `aipap-fixed-fft-1024-v0.2`:
+For `qsol-map-multiresolution-v0.2` and `qsol-map-fixed-fft-1024-v0.2`:
 
 - preserve the frozen v0.1 short reference unchanged;
 - use the committed 1024-point Q15 twiddle/window contract for the long reference;

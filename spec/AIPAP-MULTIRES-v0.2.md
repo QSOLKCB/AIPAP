@@ -9,7 +9,7 @@ This specification extends Layer 1 without modifying the frozen v0.1 profile.
 The v0.2 compact percept imports the result of the frozen profile:
 
 ```text
-aipap-fixed-fft-v0.1
+qsol-map-fixed-fft-v0.1
 ```
 
 The v0.1 algorithm, identifiers, domains, matrix commitments and golden vector are unchanged. v0.2 records the v0.1 percept SHA-256 plus the v0.1 per-channel complex/power matrix commitments as a short-window reference.
@@ -17,13 +17,13 @@ The v0.1 algorithm, identifiers, domains, matrix commitments and golden vector a
 The new aggregate profile is:
 
 ```text
-aipap-multiresolution-v0.2
+qsol-map-multiresolution-v0.2
 ```
 
 The new long-window profile is:
 
 ```text
-aipap-fixed-fft-1024-v0.2
+qsol-map-fixed-fft-1024-v0.2
 ```
 
 ## 2. Input
@@ -343,8 +343,8 @@ For multichannel sources, each event energy is at most its channel's source ener
 The complete complex and power matrices are committed separately with:
 
 ```text
-AIPAP/LONG-COMPLEX-MATRIX/v0.2
-AIPAP/LONG-POWER-MATRIX/v0.2
+QSOL-MAP/LONG-COMPLEX-MATRIX/v0.2
+QSOL-MAP/LONG-POWER-MATRIX/v0.2
 ```
 
 using the same length-prefixed canonical-row construction as v0.1.
@@ -497,13 +497,13 @@ This rejects four-frame orthogonal norms 1 and 7 and three-frame identical-chann
 
 ## 9. Compact percept identity
 
-The core schema is `aipap-percept-core-v0.2` and envelope schema is `aipap-percept-envelope-v0.2`. Identity is:
+The core schema is `qsol-map-percept-core-v0.2` and envelope schema is `qsol-map-percept-envelope-v0.2`. Identity is:
 
 ```text
-SHA256(UTF8("AIPAP/PERCEPT/v0.2") + NUL + canonical_percept_core_bytes)
+SHA256(UTF8("QSOL-MAP/PERCEPT/v0.2") + NUL + canonical_percept_core_bytes)
 ```
 
-Identity-bearing JSON remains float-free. Large exact integers are decimal strings. The implementation identifier is `aipap-python-reference-0.2.0` and package version is `0.2.0`.
+Identity-bearing JSON remains float-free. Large exact integers are decimal strings. The implementation identifier is `qsol-map-python-reference-0.2.0` and package version is `0.2.0`.
 
 ## 10. Verification contract
 
@@ -525,7 +525,7 @@ Untrusted decimal strings are bounded to 1024 digits before integer conversion. 
 
 ## 11. Optional full spectral sidecar
 
-The compact packet commits full matrices without embedding every coefficient. The optional schema `aipap-spectral-sidecar-v0.2` is canonical NDJSON: one header, all short-profile rows in channel/frame order, all long-profile rows in channel/frame order, then one receipt trailer.
+The compact packet commits full matrices without embedding every coefficient. The optional schema `qsol-map-spectral-sidecar-v0.2` is canonical NDJSON: one header, all short-profile rows in channel/frame order, all long-profile rows in channel/frame order, then one receipt trailer.
 
 Each record is exact UTF-8 terminated by one LF byte. CRLF and other translated delimiters are noncanonical. Binary-backed text inputs are read before newline translation. Seekable inputs, including StringIO, begin at logical position zero; nonzero positions are rejected without consuming or rewinding. Already-zero binary-backed text wrappers are synchronized before exact reads. Non-seekable binary-backed inputs bypass tell/seek. Explicit record iterables are checked as the complete supplied sequence, with no claim about previously discarded data.
 

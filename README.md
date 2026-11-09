@@ -39,7 +39,7 @@ AIPAP currently implements two deterministic Layer-1 profiles.
 ### Frozen v0.1 short reference
 
 ```text
-aipap-fixed-fft-v0.1
+qsol-map-fixed-fft-v0.1
 ```
 
 This published profile remains unchanged:
@@ -55,12 +55,12 @@ This published profile remains unchanged:
 ### v0.2 multi-resolution reference
 
 ```text
-aipap-multiresolution-v0.2
+qsol-map-multiresolution-v0.2
 ```
 
 v0.2 imports the frozen v0.1 evidence and adds:
 
-- `aipap-fixed-fft-1024-v0.2`, a deterministic 1024-sample / 512-hop long-window reference;
+- `qsol-map-fixed-fft-1024-v0.2`, a deterministic 1024-sample / 512-hop long-window reference;
 - separate long complex-matrix and power-matrix commitments;
 - exact represented-frequency support up to source Nyquist;
 - authored `[0,20 kHz)`, `[20,40 kHz)`, and `[40 kHz,Nyquist]` power regions;
@@ -166,7 +166,7 @@ These complete-source checks do not apply endpoint aggregates to tails of longer
 The compact percept commits to full matrices without embedding every coefficient. The optional schema is:
 
 ```text
-aipap-spectral-sidecar-v0.2
+qsol-map-spectral-sidecar-v0.2
 ```
 
 Canonical NDJSON contains one header, every frozen short-profile row, every long-profile row, then one receipt trailer. Every coefficient is encoded as:
